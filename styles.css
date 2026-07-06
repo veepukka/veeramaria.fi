@@ -265,6 +265,7 @@ main {
   border-radius: 50%;
   overflow: hidden;
   border: 2px solid var(--rim);
+  background: #d8ebdd; /* photo-toned fill so loading shows a soft green disc, not white */
   box-shadow: 0 0 18px rgba(160, 220, 180, 0.8), inset 0 0 12px rgba(255, 255, 255, 0.5);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
@@ -290,6 +291,7 @@ main {
   border-radius: 50%;
   overflow: hidden;
   border: 3px solid var(--rim);
+  background: #d8ebdd; /* photo-toned fill so loading shows a soft green disc, not white */
   box-shadow: 0 0 28px rgba(160, 220, 180, 0.8), inset 0 0 16px rgba(255, 255, 255, 0.5);
   margin-bottom: 1.5rem;
   position: relative;
