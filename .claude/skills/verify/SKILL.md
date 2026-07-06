@@ -8,7 +8,7 @@ description: How to run and verify the veeramaria.fi static poetry site
 Static site, no build step. Serve and drive in a browser:
 
 ```bash
-python3 -m http.server 8462 &          # from repo root
+python3 serve.py &                     # from repo root; serves /veera like GitHub Pages
 web session ensure                      # web-go skill; browser runs in Docker
 web go http://host.docker.internal:8462/   # NOT localhost — container can't see host
 ```
@@ -22,7 +22,7 @@ Flows worth driving:
   navigate; title via `web exec "document.querySelector('.poem-title').textContent"`
 - Audio poems ("Bubble", "God's Masks"): click `.audio-bubble` must NOT
   advance the poem; aria-label toggles Play/Pause; changing poem pauses audio
-- Profile bubble `.profile-bubble` → about.html
+- Profile bubble `.profile-bubble` → /veera
 - Rapid triple-click must advance only one poem (animation guard)
 
 Gotcha: reload gives a random starting poem — never assert a specific
