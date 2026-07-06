@@ -192,8 +192,8 @@ He ovat poissa
 
 Mutta puut
 Puut ovat vielä täällä`,
-    audio: null,
-    reader: null,
+    audio: "assets/puut.mp3",
+    reader: "Henri Vähäkainu",
   },
   {
     title: "jos saisi",
