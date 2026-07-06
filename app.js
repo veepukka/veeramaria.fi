@@ -124,21 +124,35 @@ if (card) {
       go(dx < 0 ? 1 : -1);
     }
   });
-  card.addEventListener("click", () => {
+  // left 30% of the card goes back, the rest goes forward
+  function zoneDir(e) {
+    const rect = card.getBoundingClientRect();
+    return (e.clientX - rect.left) / rect.width < 0.3 ? -1 : 1;
+  }
+
+  card.addEventListener("click", (e) => {
     if (swiped) {
       swiped = false;
       return;
     }
-    go(1);
+    go(zoneDir(e));
+  });
+
+  // reveal the matching arrow hint while hovering a zone
+  const area = card.parentElement;
+  card.addEventListener("mousemove", (e) => {
+    const prev = zoneDir(e) < 0;
+    area.classList.toggle("hover-prev", prev);
+    area.classList.toggle("hover-next", !prev);
+  });
+  card.addEventListener("mouseleave", () => {
+    area.classList.remove("hover-prev", "hover-next");
   });
 
   document.addEventListener("keydown", (e) => {
     if (e.key === "ArrowRight") go(1);
     else if (e.key === "ArrowLeft") go(-1);
   });
-
-  document.querySelector(".poem-arrow-prev").addEventListener("click", () => go(-1));
-  document.querySelector(".poem-arrow-next").addEventListener("click", () => go(1));
 
   render();
 }

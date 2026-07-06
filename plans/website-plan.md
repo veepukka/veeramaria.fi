@@ -25,9 +25,10 @@ assets/*.m4a        Placeholder audio for the two audio poems
 - Random starting poem, then fixed cyclic order (`(i + 1) % 8`)
 - Tap/click card → next poem; swipe left/right → next/prev;
   Arrow keys → next/prev (keyboard access)
-- Visible prev/next arrow bubbles flanking the poem card
-  (user request 2026-07-06, overrides the brief's "no arrows")
-- No dots or counters
+- Edge-click zones on the poem card: left 30% → previous poem,
+  right 70% → next poem; an arrow bubble fades in only while the
+  mouse hovers the matching zone (user request 2026-07-06)
+- No dots or counters, no always-visible arrows
 - Fade + slight slide transition; instant swap under
   `prefers-reduced-motion`
 - Audio bubble on two poems: play/pause/resume toggle,
