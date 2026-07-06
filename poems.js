@@ -217,7 +217,7 @@ hyvää huomenta`,
     title: "Kun maa on kuollut",
     text: `Eikä kukaan enää hengitä elämää
 
-Kuun puut seisovat riisuttuina
+Kun puut seisovat riisuttuina
 
 Tummia
 

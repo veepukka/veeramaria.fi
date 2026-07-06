@@ -179,12 +179,13 @@ main {
 .poem-title-row {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 0.75rem;
   margin-bottom: 1.4rem;
 }
 
 .poem-title {
+  text-align: left; /* card centers text; keep wrapped titles left-aligned too */
   font-size: 1.45rem;
   font-weight: 400;
   font-style: italic;
