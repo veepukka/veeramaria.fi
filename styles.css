@@ -10,9 +10,8 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* solid canvas behind the body gradient: stops the gradient from
-   propagating (and repeating) past the body box on iOS overscroll */
-html { background: #c8e1d2; }
+/* solid canvas matching the watercolour wash, shows on iOS overscroll */
+html { background: #f3f2d0; }
 
 body {
   min-height: 100vh;
@@ -20,7 +19,7 @@ body {
   flex-direction: column;
   font-family: var(--serif);
   color: var(--ink);
-  background: linear-gradient(180deg, #eaf4ea 0%, #d8ebdd 45%, #c8e1d2 100%);
+  background: #f3f2d0;
   overflow-x: hidden;
 }
 
@@ -48,14 +47,43 @@ main {
   white-space: nowrap;
 }
 
-/* ---------- enchanted forest background ---------- */
+/* ---------- watercolour background ----------
+   seamless wash tiles across the whole viewport; leafy edge images sit on
+   the left/right, their inner edge mask-faded into the wash so the seam
+   between the three images never shows, whatever the window size */
 .forest {
   position: fixed;
   inset: 0;
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
+  background: url("assets/tausta-keski.jpg") top left / 800px auto repeat;
 }
+
+.forest::before,
+.forest::after {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0;
+  /* natural aspect is 3:4 — at full viewport height that is 75vh wide;
+     cap by vw so the two edges never meet on narrow/portrait screens */
+  width: min(75vh, 34vw);
+}
+.forest::before {
+  left: 0;
+  background: url("assets/tausta-vasen.jpg") left top / cover no-repeat;
+  -webkit-mask-image: linear-gradient(to right, #000 55%, transparent);
+  mask-image: linear-gradient(to right, #000 55%, transparent);
+}
+.forest::after {
+  right: 0;
+  background: url("assets/tausta-oikea.jpg") right top / cover no-repeat;
+  -webkit-mask-image: linear-gradient(to left, #000 55%, transparent);
+  mask-image: linear-gradient(to left, #000 55%, transparent);
+}
+
+/* old procedural layers, replaced by the watercolour images — kokeilu */
+.blob, .leaves, .water { display: none; }
 
 .blob {
   position: absolute;
@@ -125,7 +153,7 @@ main {
   to   { transform: translateX(44px); }
 }
 
-.sparkles { position: absolute; inset: 0; }
+.sparkles { position: absolute; inset: 0; z-index: 1; } /* above the ::after edge image */
 .sparkles span {
   position: absolute;
   width: 4px; height: 4px;
