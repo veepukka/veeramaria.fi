@@ -38,4 +38,23 @@ Puskee vihreää`,
     audio: null,
     reader: null,
   },
+  {
+    title: "Jos kuitenkin uskon",
+    text: `Että tämä maa kantaa
+Tämä syli pysyy avoinna
+Nämä kädet koskettavat hellyydellä
+Kieli vielä puhuu pehmeitä sanoja
+
+Jos kuitenkin uskon niin
+Vaikka vanhat lorut ja taiat yrittävät napata kiinni
+Iskeä väliin
+
+Sotkee katseet ja sanat ja tavut ja tarinat
+
+Jos kuitenkin uskon niin
+
+Pidäthän minusta kiinni?`,
+    audio: null,
+    reader: null,
+  },
 ];
