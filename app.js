@@ -87,6 +87,7 @@ if (card) {
 
   function go(dir) {
     if (animating) return;
+    area.classList.remove("hover-prev", "hover-next");
     audio.pause();
     index = (index + dir + POEMS.length) % POEMS.length;
     if (reducedMotion) {
@@ -141,6 +142,7 @@ if (card) {
   // reveal the matching arrow hint while hovering a zone
   const area = card.parentElement;
   card.addEventListener("mousemove", (e) => {
+    if (animating) return; // keep the hint hidden while the poem is changing
     const prev = zoneDir(e) < 0;
     area.classList.toggle("hover-prev", prev);
     area.classList.toggle("hover-next", !prev);
