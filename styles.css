@@ -293,7 +293,7 @@ main {
   position: relative;
   display: block;
   margin-bottom: clamp(1.25rem, 4vh, 2rem);
-  width: 64px; height: 64px;
+  width: 150px; height: 150px;
   border-radius: 50%;
   overflow: hidden;
   border: 2px solid var(--rim);
@@ -318,8 +318,8 @@ main {
 .about main { justify-content: center; text-align: center; gap: 0.4rem; }
 
 .about-portrait {
-  width: clamp(140px, 30vw, 190px);
-  height: clamp(140px, 30vw, 190px);
+  width: clamp(140px, 30vw, 250px);
+  height: clamp(140px, 30vw, 250px);
   border-radius: 50%;
   overflow: hidden;
   border: 3px solid var(--rim);
