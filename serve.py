@@ -11,5 +11,8 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         return p
 
 
+PORT = 8462
+
 if __name__ == "__main__":
-    http.server.test(HandlerClass=Handler, port=8462)
+    print(f"http://localhost:{PORT}", flush=True)
+    http.server.test(HandlerClass=Handler, port=PORT)
