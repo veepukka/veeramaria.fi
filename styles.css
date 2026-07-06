@@ -10,8 +10,6 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { height: 100%; }
-
 body {
   min-height: 100vh;
   display: flex;
@@ -164,6 +162,7 @@ main {
   -webkit-backdrop-filter: blur(14px);
   cursor: pointer;
   text-align: center;
+  touch-action: pan-y; /* horizontal gestures on the card are ours */
   transition: opacity 0.28s ease, transform 0.28s ease;
 }
 .poem-card:empty { min-height: 8rem; }

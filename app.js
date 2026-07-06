@@ -109,18 +109,32 @@ if (card) {
     }, 280);
   }
 
-  // tap/click → next; suppress the click that follows a swipe
-  let touchX = null;
+  // tap/click → next; suppress the click that follows a swipe.
+  // Direction lock: the gesture's first ~8px decide whether it is a
+  // horizontal swipe (ours, page held still) or a vertical scroll (browser's).
+  let touchX = null, touchY = null;
+  let swipeAxis = null;
   let swiped = false;
   card.addEventListener("touchstart", (e) => {
     touchX = e.touches[0].clientX;
+    touchY = e.touches[0].clientY;
+    swipeAxis = null;
     swiped = false;
   }, { passive: true });
+  card.addEventListener("touchmove", (e) => {
+    if (touchX === null) return;
+    const dx = e.touches[0].clientX - touchX;
+    const dy = e.touches[0].clientY - touchY;
+    if (!swipeAxis && (Math.abs(dx) > 8 || Math.abs(dy) > 8)) {
+      swipeAxis = Math.abs(dx) > Math.abs(dy) ? "x" : "y";
+    }
+    if (swipeAxis === "x") e.preventDefault(); // keep the page from jumping
+  }, { passive: false });
   card.addEventListener("touchend", (e) => {
     if (touchX === null) return;
     const dx = e.changedTouches[0].clientX - touchX;
     touchX = null;
-    if (Math.abs(dx) > 40) {
+    if (swipeAxis === "x" && Math.abs(dx) > 40) {
       swiped = true;
       go(dx < 0 ? 1 : -1);
     }
