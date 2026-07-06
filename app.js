@@ -137,5 +137,8 @@ if (card) {
     else if (e.key === "ArrowLeft") go(-1);
   });
 
+  document.querySelector(".poem-arrow-prev").addEventListener("click", () => go(-1));
+  document.querySelector(".poem-arrow-next").addEventListener("click", () => go(1));
+
   render();
 }
