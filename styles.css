@@ -349,6 +349,8 @@ footer {
   color: rgba(60, 90, 72, 0.65);
 }
 
+footer a { color: inherit; text-decoration: none; }
+
 .noscript-note { margin-top: 1rem; font-style: italic; }
 
 /* ---------- reduced motion ---------- */
