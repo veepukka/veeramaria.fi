@@ -252,6 +252,8 @@ main {
 @media (hover: hover) {
   .poem-area.hover-prev .poem-hint-prev,
   .poem-area.hover-next .poem-hint-next { opacity: 0.9; }
+  /* keep poem text clear of the hint arrows (0.9rem + 2.4rem wide) + breathing room */
+  .poem-card { padding-left: 4.2rem; padding-right: 4.2rem; }
 }
 /* and on touch-only devices the hints do not exist at all */
 @media (hover: none) {
