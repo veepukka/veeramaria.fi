@@ -258,7 +258,7 @@ Eikä kukaan enää hengitä elämää
 Herää taivas eloon
 Koko täyteen loistoonsa
 Maalaten eteesi sinut`,
-    audio: null,
-    reader: null,
+    audio: "assets/kun-maa-on-kuollut.mp3",
+    reader: "Teemu Mäkinen",
   },
 ];
