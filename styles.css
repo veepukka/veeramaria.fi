@@ -242,8 +242,12 @@ main {
 }
 .poem-hint-prev { left: 0.9rem; }
 .poem-hint-next { right: 0.9rem; }
-.poem-area.hover-prev .poem-hint-prev,
-.poem-area.hover-next .poem-hint-next { opacity: 0.9; }
+/* hover hints only on devices that actually hover — on touch the
+   emulated mouse events would just flash the arrow on tap */
+@media (hover: hover) {
+  .poem-area.hover-prev .poem-hint-prev,
+  .poem-area.hover-next .poem-hint-next { opacity: 0.9; }
+}
 
 /* ---------- profile bubble ---------- */
 .profile-bubble {
