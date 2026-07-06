@@ -57,4 +57,15 @@ Pidäthän minusta kiinni?`,
     audio: null,
     reader: null,
   },
+  {
+    title: "Hitaasti, mutta varmasti",
+    text: `He kypsyvät
+Metsän sylissä
+Sammalpeitteellä
+Varpujen nokassa
+Auringon hivelemänä
+Sadepisaroiden pesemänä`,
+    audio: null,
+    reader: null,
+  },
 ];
