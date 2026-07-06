@@ -2,6 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <script>
+    // ponytail: not real security, password is visible in source — fine for "don't look yet"
+    if (localStorage.getItem('gate') !== 'open') {
+      if (prompt('Password?') === 'runot') localStorage.setItem('gate', 'open');
+      else location.replace('about:blank');
+    }
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Veera Palo — About &amp; Contact</title>
   <meta name="description" content="About Veera Palo, creator of poems.">
