@@ -10,6 +10,10 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* solid canvas behind the body gradient: stops the gradient from
+   propagating (and repeating) past the body box on iOS overscroll */
+html { background: #c8e1d2; }
+
 body {
   min-height: 100vh;
   display: flex;
@@ -246,6 +250,10 @@ main {
 @media (hover: hover) {
   .poem-area.hover-prev .poem-hint-prev,
   .poem-area.hover-next .poem-hint-next { opacity: 0.9; }
+}
+/* and on touch-only devices the hints do not exist at all */
+@media (hover: none) {
+  .poem-hint { display: none; }
 }
 
 /* ---------- profile bubble ---------- */

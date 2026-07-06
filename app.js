@@ -115,7 +115,9 @@ if (card) {
   let touchX = null, touchY = null;
   let swipeAxis = null;
   let swiped = false;
+  let lastTouch = 0; // browsers fire emulated mouse events after touch
   card.addEventListener("touchstart", (e) => {
+    lastTouch = Date.now();
     touchX = e.touches[0].clientX;
     touchY = e.touches[0].clientY;
     swipeAxis = null;
@@ -131,6 +133,7 @@ if (card) {
     if (swipeAxis === "x") e.preventDefault(); // keep the page from jumping
   }, { passive: false });
   card.addEventListener("touchend", (e) => {
+    lastTouch = Date.now();
     if (touchX === null) return;
     const dx = e.changedTouches[0].clientX - touchX;
     touchX = null;
@@ -157,6 +160,7 @@ if (card) {
   const area = card.parentElement;
   card.addEventListener("mousemove", (e) => {
     if (animating) return; // keep the hint hidden while the poem is changing
+    if (Date.now() - lastTouch < 1000) return; // ignore touch-emulated mouse events
     const prev = zoneDir(e) < 0;
     area.classList.toggle("hover-prev", prev);
     area.classList.toggle("hover-next", !prev);
