@@ -10,7 +10,7 @@ Static site, no build step. Serve and drive in a browser:
 ```bash
 python3 serve.py &                     # from repo root; serves /veera like GitHub Pages
 web session ensure                      # web-go skill; browser runs in Docker
-web go http://host.docker.internal:8462/   # NOT localhost — container can't see host
+web go http://host.docker.internal:8080/   # NOT localhost — container can't see host
 ```
 
 Run `web` commands from the repo root (the container mounts cwd;
