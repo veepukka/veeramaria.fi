@@ -290,10 +290,6 @@ main {
 
 /* ---------- position dots (carousel signal + jump navigation) ---------- */
 .poem-dots {
-  /* last child of <main>: sticks to the viewport bottom while a long poem
-     extends below the fold, settles under the card once scrolled to the end */
-  position: sticky;
-  bottom: 1rem;
   display: flex;
   margin-top: 0.85rem;
 }
