@@ -26,6 +26,15 @@ if (card) {
     '<path d="M8 6h3v12H8zM13 6h3v12h-3z" fill="currentColor"/></svg>';
 
   let index = Math.floor(Math.random() * POEMS.length); // random start, fixed cyclic order
+
+  const dots = document.getElementById("poem-dots");
+  POEMS.forEach((poem, i) => {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.setAttribute("aria-label", poem.title);
+    b.addEventListener("click", () => show(i, i > index ? 1 : -1));
+    dots.append(b);
+  });
   const audio = new Audio();
   let audioPoem = null; // poem whose file is loaded in `audio`
   let animating = false;
@@ -45,6 +54,11 @@ if (card) {
 
   function render() {
     const poem = POEMS[index];
+    [...dots.children].forEach((d, i) => {
+      d.classList.toggle("active", i === index);
+      if (i === index) d.setAttribute("aria-current", "true");
+      else d.removeAttribute("aria-current");
+    });
     card.innerHTML = "";
 
     const row = document.createElement("div");
@@ -86,10 +100,15 @@ if (card) {
   }
 
   function go(dir) {
-    if (animating) return;
+    show((index + dir + POEMS.length) % POEMS.length, dir);
+  }
+
+  // dir only picks the slide animation's direction
+  function show(next, dir) {
+    if (animating || next === index) return;
     area.classList.remove("hover-prev", "hover-next");
     audio.pause();
-    index = (index + dir + POEMS.length) % POEMS.length;
+    index = next;
     if (reducedMotion) {
       render();
       return;
